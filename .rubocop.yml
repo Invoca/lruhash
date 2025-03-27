@@ -1,26 +1,7 @@
-AllCops:
-  Include:
-    - '**/Rakefile'
-    - '**/config.ru'
-    - 'lib/**/*'
-
-# other configuration
-# ...
-
-Style/StringLiterals:
-  Enabled: false
-
-Style/Documentation:
-  Enabled: false
-
-Style/IfUnlessModifier:
-  Enabled: false
-
-Style/EmptyLinesAroundClassBody:
-  Enabled: false
-
-Style/EndOfLine:
-  Enabled: false
-
-Metrics/LineLength:
-  Max: 120
+# This rubocop config file inherits from our centralized style-guide repository.
+# If you are looking to update the ruby style guide, be sure to both update the rubocop config
+# as well as the README.md
+# https://github.com/Invoca/style-guide/tree/master/ruby
+inherit_from:
+  - https://raw.githubusercontent.com/Invoca/style-guide/master/ruby/.rubocop.yml
+  # - .rubocop_todo.yml  # do not inherit from "todo", in order to prevent rubocop from excusing this long list of issues from subsequent inspections.
