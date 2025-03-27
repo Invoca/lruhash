@@ -5,3 +5,5 @@
 inherit_from:
   - https://raw.githubusercontent.com/Invoca/style-guide/master/ruby/.rubocop.yml
   # - .rubocop_todo.yml  # do not inherit from "todo", in order to prevent rubocop from excusing this long list of issues from subsequent inspections.
+AllCops:
+  SuggestExtensions: false

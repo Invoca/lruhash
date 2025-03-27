@@ -5,6 +5,7 @@ class LRUHash < Hash
 
   def initialize(max: 256)
     @max = max
+    super()
   end
 
   def store(key, value)
