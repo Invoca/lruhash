@@ -32,9 +32,9 @@ describe 'LRUHash' do
       @hash["2"] = 2
       @hash["3"] = 3
 
-      assert_equal nil, @hash["1"]
-      assert_equal 2,   @hash["2"]
-      assert_equal 3,   @hash["3"]
+      assert_nil @hash["1"]
+      assert_equal 2, @hash["2"]
+      assert_equal 3, @hash["3"]
     end
 
     it "should throw out the least recently read item" do
@@ -46,9 +46,9 @@ describe 'LRUHash' do
 
       @hash["3"] = 3
 
-      assert_equal 1,   @hash["1"]
-      assert_equal nil, @hash["2"]
-      assert_equal 3,   @hash["3"]
+      assert_equal 1, @hash["1"]
+      assert_nil @hash["2"]
+      assert_equal 3, @hash["3"]
     end
 
     it "should throw out the least recently read item even if falsey" do
@@ -61,8 +61,8 @@ describe 'LRUHash' do
       @hash["3"] = 3
 
       assert_equal false, @hash["1"]
-      assert_equal nil, @hash["2"]
-      assert_equal 3,   @hash["3"]
+      assert_nil @hash["2"]
+      assert_equal 3, @hash["3"]
     end
 
     it "should expire old items when store is called" do
@@ -72,9 +72,9 @@ describe 'LRUHash' do
 
       @hash.store("3", 3)
 
-      assert_equal nil, @hash["1"]
-      assert_equal 2,   @hash["2"]
-      assert_equal 3,   @hash["3"]
+      assert_nil @hash["1"]
+      assert_equal 2, @hash["2"]
+      assert_equal 3, @hash["3"]
     end
 
     describe "fetch" do
@@ -87,21 +87,21 @@ describe 'LRUHash' do
 
         @hash["3"] = 3
 
-        assert_equal 1,   @hash["1"]
-        assert_equal nil, @hash["2"]
-        assert_equal 3,   @hash["3"]
+        assert_equal 1, @hash["1"]
+        assert_nil @hash["2"]
+        assert_equal 3, @hash["3"]
       end
 
       it "should allow fetch with a default.  Does not store if used." do
         @hash = LRUHash.new(max: 2)
         assert_equal 42, @hash.fetch('2', 42)
-        assert_equal nil, @hash['2']
+        assert_nil @hash['2']
       end
 
       it "should allow fetch with a block.  Does not store if used." do
         @hash = LRUHash.new(max: 2)
         assert_equal 42, @hash.fetch('2', 42)
-        assert_equal nil, @hash['2']
+        assert_nil @hash['2']
       end
     end
 
@@ -120,7 +120,7 @@ describe 'LRUHash' do
         keys.each { |k| @hash[k.to_s] }
         @hash["last"] = "push the first out!"
 
-        assert_equal nil, @hash["first"]
+        assert_nil @hash["first"]
       end
     end
   end
