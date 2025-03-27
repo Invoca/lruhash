@@ -49,6 +49,20 @@ describe 'LRUHash' do
       assert_equal 3,   @hash["3"]
     end
 
+    it "should throw out the least recently read item even if falsey" do
+      @hash = LRUHash.new(max: 2)
+      @hash["1"] = false
+      @hash["2"] = 2
+
+      @hash["1"]
+
+      @hash["3"] = 3
+
+      assert_equal false, @hash["1"]
+      assert_equal nil, @hash["2"]
+      assert_equal 3,   @hash["3"]
+    end
+
     it "should expire old items when store is called" do
       @hash = LRUHash.new(max: 2)
       @hash["1"] = 1
