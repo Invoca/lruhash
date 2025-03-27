@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LRUHash < Hash
   attr_reader :max
 

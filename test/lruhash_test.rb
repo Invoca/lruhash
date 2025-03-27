@@ -1,4 +1,6 @@
-require File.expand_path('../../lib/lruhash',  __FILE__)
+# frozen_string_literal: true
+
+require File.expand_path('../lib/lruhash',  __dir__)
 require 'bundler'
 Bundler.require(:default)
 require 'pry'
@@ -98,7 +100,7 @@ describe 'LRUHash' do
 
       it "should allow fetch with a block.  Does not store if used." do
         @hash = LRUHash.new(max: 2)
-        assert_equal 42, @hash.fetch('2') { 42 }
+        assert_equal 42, @hash.fetch('2', 42)
         assert_equal nil, @hash['2']
       end
     end
