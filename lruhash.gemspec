@@ -6,7 +6,7 @@ Gem::Specification.new do |gem|
   gem.name     = "lruhash"
   gem.version  = LruHash::VERSION
   gem.summary  = "A hash class with LRU semantics"
-  gem.homepage = "http://github.com/invoca/lrudhash"
+  gem.homepage = "http://github.com/invoca/lruhash"
   gem.description = "A hash class that is limited in size and discards old entries based on LRU - forked from http://github.com/oldmoe/lrudhash"
 
   gem.metadata = {
