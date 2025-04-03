@@ -1,4 +1,4 @@
-= LRUHash
+# LRUHash
 
 This is a hash class that holds a maximum number of elements.  If adding an element causes the hash to grow over this size, the least recently used element is removed. Elements in the hash are maintained in LRU order.
 
@@ -6,42 +6,51 @@ Useful for implementing in-process caches where memory growth control is desired
 
 
 Example:
+```ruby
+myhash = LRUHash.new(max: 2)
 
-  myhash = LRUHash.new
-  myhash.max = 2
+myhash['a'] = 'apples'
+myhash['b'] = 'banana'
 
-  myhash['a'] = 'apples'
-  myhash['b'] = 'banana'
+myhash.length # => 2
 
-  myhash.length # => 2
+myhash['c'] = 'cookie' # displaces 'a'
 
-  myhash['c'] = 'cookie'
+myhash.length # => 2
 
-  myhash.length # => 2
+myhash['a'] # => nil
 
-  myhash['a'] # => nil
+myhash
+=> {"b"=>"banana", "c"=>"cookie"}
+````
 
-
-== Installation
+## Installation
 
 Add this line to your application's Gemfile:
 
-  gem 'lruhash'
-
+```ruby
+gem 'lruhash'
+```
 And then execute:
-
-  $ bundle
-
+```ruby
+$ bundle
+```
 Or install it yourself as:
+```ruby
+$ gem install lruhash
+```
+## Usage
+```ruby
+require 'lruhash'
 
-  $ gem install lruhash
+myhash = LRUHash.new(max: 100)
 
-== Usage
+# Works like a regular Hash, except limited to 100 elements.
+# When that size is exceeded, the Least Recently Used element will be ejected.
+# Simply reading an element will move it to the front of the Most Recently Used list (back of LRU list).
+```
 
-  require 'lruhash'
-
-
-== Contributing
+## Contributing
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
@@ -50,5 +59,5 @@ Or install it yourself as:
 5. Create new Pull Request
 
 
-== Credit
+## Credit
 This was forked from http://github.com/oldmoe/lruhash and modernized.  Thanks to oldmoe for the first version.

@@ -1,23 +1,26 @@
+# frozen_string_literal: true
+
 class LRUHash < Hash
   attr_reader :max
 
   def initialize(max: 256)
     @max = max
+    super()
   end
 
   def store(key, value)
-    if !key?(key) && length > (max - 1)
+    if !has_key?(key) && length >= max
       shift
     end
-    super(key, value)
+    super
   end
 
-  def fetch(*args, &blk)
-    key = args[0]
-    if key?(key)
+  def fetch(*args)
+    key = args.first
+    if has_key?(key)
       self[key]
     else
-      super(*args, &blk)
+      super
     end
   end
 
@@ -26,11 +29,9 @@ class LRUHash < Hash
   end
 
   def [](key)
-    if (value = super(key))
-      # We delete and add here to put the entry back on the front of the LRU list.
-      delete(key)
-      self[key] = value
+    if has_key?(key)
+      # Delete and add back to put the entry back on the back of the LRU (front of MRU) list.
+      self[key] = delete(key)
     end
-    value
   end
 end
