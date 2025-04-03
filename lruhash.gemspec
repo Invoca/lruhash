@@ -12,7 +12,6 @@ Gem::Specification.new do |gem|
   gem.metadata = {
     'rubygems_mfa_required' => 'true'
   }
-  gem.required_ruby_version = '>= 3.3'
 
   gem.authors  = ["Invoca Development"]
   gem.email    = "development@invoca.com"
