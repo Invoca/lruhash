@@ -26,18 +26,18 @@ myhash
 
 ## Installation
 
-Add this line to your application's Gemfile:
+This gem is published to Invoca's private Gemfury server, not to RubyGems.org. Add it inside a `PRIVATE_GEM_SERVER` source block in your application's Gemfile:
 
 ```ruby
-gem 'lruhash'
+PRIVATE_GEM_SERVER = 'https://gem.fury.io/invoca'
+
+source PRIVATE_GEM_SERVER do
+  gem 'lruhash'
+end
 ```
 And then execute:
 ```ruby
 $ bundle
-```
-Or install it yourself as:
-```ruby
-$ gem install lruhash
 ```
 ## Usage
 ```ruby
