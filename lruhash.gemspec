@@ -10,7 +10,9 @@ Gem::Specification.new do |gem|
   gem.description = "A hash class that is limited in size and discards old entries based on LRU - forked from http://github.com/oldmoe/lrudhash"
 
   gem.metadata = {
-    'rubygems_mfa_required' => 'true'
+    'allowed_push_host' => 'https://gem.fury.io/invoca',
+    'rubygems_mfa_required' => 'true',
+    'source_code_uri' => 'https://github.com/Invoca/lruhash'
   }
 
   gem.authors  = ["Invoca Development"]
